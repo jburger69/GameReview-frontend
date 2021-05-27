@@ -10,7 +10,16 @@ function fetchGames() {
     .then(r => r.json())
     .then(data => {
         data.forEach(function(game){
-            gamesContainer.innerHTML += `<li>Game: ${game.title}<br>Price: $${game.price}<br>Genre: ${game.genre}<br>Platform: ${game.platform}</li><br>`
+            gamesContainer.innerHTML += `<div class="card">
+            <div class="card-body">
+            <h4 class="card-title">Game: ${game.title}<br></h4>
+            <p class="card-text">
+            Price: $${game.price}<br>
+            Genre: ${game.genre}<br>
+            Platform: ${game.platform}<br>
+            </p>
+            </div>
+            </div>`
         })
     })
     .catch(err => console.log(err))
