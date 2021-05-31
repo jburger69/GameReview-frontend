@@ -1,5 +1,6 @@
 gameURL = "http://localhost:3000/api/v1/games"
 const showDiv = document.createElement('div')
+const renderDiv = document.getElementById("games-container")
 
 
 document.addEventListener("DOMContentLoaded", () => {
