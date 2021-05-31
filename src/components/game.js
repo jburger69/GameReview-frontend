@@ -36,8 +36,6 @@ class Game {
             Price: $${this.price}<br>
             Genre: ${this.genre}<br>
             Platform: ${this.platform}<br>
-            Reviews: ${this.reviews.name}<br>
-            Reviews Content: ${this.reviews.content}<br>
             </p>
             </div>
             </div>`
@@ -49,7 +47,7 @@ class Game {
         const gamesContainer = document.getElementById("games-container");
         gamesContainer.innerHTML = ""
         gameSingle.addSingleGameToDom();
-        
+        gameSingle.getGameForm();
     }
 
     addToDom(){
@@ -60,6 +58,10 @@ class Game {
     addSingleGameToDom(){
         const gamesContainer = document.getElementById("games-container");
         gamesContainer.innerHTML += this.renderSingleGame()
+    }
+
+    getGameForm(){
+        ReviewForm.addReviewForm()
     }
 
 }
