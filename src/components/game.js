@@ -47,7 +47,9 @@ class Game {
         const gamesContainer = document.getElementById("games-container");
         gamesContainer.innerHTML = ""
         gameSingle.addSingleGameToDom();
-        gameSingle.getGameForm();
+        gameSingle.getGameForm(gameSingle.id);
+        // gameSingle.addReviewToDom(gameSingle.reviews)
+        gameSingle.reviews.map(review => gameSingle.addReviewToDom(review))
     }
 
     addToDom(){
@@ -60,8 +62,12 @@ class Game {
         gamesContainer.innerHTML += this.renderSingleGame()
     }
 
-    getGameForm(){
-        ReviewForm.addReviewForm()
+    getGameForm(id){
+        ReviewForm.addReviewForm(id)
+    }
+
+    addReviewToDom(review){
+        Review.render(review)
     }
 
 }
