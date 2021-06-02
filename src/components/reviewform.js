@@ -12,8 +12,10 @@ class ReviewForm {
             <div class="card">
             <div class="card-body">
             <h4>Create a Review</h4>
-            <input id="review-input" placeholder='review' type='text'/><br>
-            <input class="btn btn-primary btn-smail id="review-submit" value='Post review' type='submit'/>`
+            <input id="reviews-input" placeholder='review' type='text'/><br>
+            <input class="btn btn-primary btn-smail id="review-submit" value='Post review' type='submit'/>
+            </div>
+            </div>`
         renderDiv.append(showDiv)
         showDiv.append(form)
     
