@@ -4,17 +4,6 @@ html {
 }
 
 
-/* body {
-   background-color: #82b91b;
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   position: relative;
-   font-family: Sans-Serif;
-   line-height: 18px;
-} */
-
-
 #games-container {
     background-color: #6b9b14;
     background-position: center;
@@ -46,7 +35,4 @@ html {
    margin-top: 50px;
    margin-bottom: 50px;
 }
-
-/* li {
-   list-style-type: none;
-} */
+ 
