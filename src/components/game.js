@@ -49,7 +49,7 @@ class Game {
         gameSingle.addSingleGameToDom();
         gameSingle.getGameForm(gameSingle.id);
         // gameSingle.addReviewToDom(gameSingle.reviews)
-        gameSingle.reviews.map(review => gameSingle.addReviewToDom(review))
+        gameSingle.reviews.map(review => Review.render(review, gameSingle.id))
     }
 
     addToDom(){
@@ -65,9 +65,5 @@ class Game {
     getGameForm(id){
         ReviewForm.addReviewForm(id)
     }
-
-    addReviewToDom(review){
-        Review.render(review)
-    }
-
+    
 }
