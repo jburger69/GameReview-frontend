@@ -1,6 +1,7 @@
 const gameURL = "http://localhost:3000/api/v1/games"
 const showDiv = document.createElement('div')
 const renderDiv = document.getElementById("games-container")
+const deleteButton = document.getElementsByClassName('delete-button')
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,13 +32,19 @@ mainDiv.addEventListener("click", (event) => {
             fetch(gameURL)
             .then(r => r.json())
             .then(data => {
-                Game.getInfo(data.find(g => g.id == e.id)) 
+                Game.getInfo(data.find(g => g.id == e.id))
+            })
+            .catch(err => console.log(err))
+
+            }
     })
-    .catch(err => console.log(err))
-            break;
-        default:
-            break;
-    }
-})
+
+
+// Game.all.forEach(game => {
+//     const g = new Game(game)
+//     g.addToDom()
+// })
+
+
 
 
