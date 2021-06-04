@@ -10,17 +10,22 @@ class Review {
         Review.all.push(this)
     }
 
-    static render(review) {
+    static render(review, gameId) {
         let a = document.createElement('div')
-        a.innerHTML += `<div class="card">
+        a.innerHTML += `<div class="card" id=${review.id}>
         <div class="card-body">
-        <ol data-id=${review.id}>
+        <ol data-id=${gameId}>
         <h2>Review:</h2>
-        <p>${review.content}</p><button class="btn btn-primary btn-smail" data-action='delete'>Delete</button>
+        <p>${review.content}</p><button id=delete-${review.id} data-id="delete" class="btn btn-primary btn-small" data-action='delete'>Delete</button>
         </ol><br>
         </div>
         </div>`
         showDiv.append(a)
+        let button = document.getElementById(`delete-${review.id}`)
+        button.addEventListener("click", (e) => { 
+            e.target.parentElement.parentElement.parentElement.remove()
+            return this.deleteReview(gameId, review.id)
+        })
         
     }
 
@@ -43,13 +48,21 @@ class Review {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(".then(2): ", data)
-                let a = document.getElementById('games-container')
-                const review = new Review(data)
-                this.render(review)
+        
+            let a = document.getElementById('games-container')
+            const review = new Review(data)
+            this.render(review)
             
             reviewInput.value = ""
         })
         .catch(err => console.error(".catch: ", err))
     }
+
+    static deleteReview(id, rev){
+        fetch(`${gameURL}/${id}/reviews/${rev}`, {
+            method: "DELETE"
+        })
+        .catch(err => console.error(err))
+    }
+        
 }
