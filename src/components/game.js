@@ -29,7 +29,9 @@ class Game {
     }
 
     renderSingleGame(){
-        return(`<div class="card">
+        return(
+            `
+            <div class="card">
             <div class="card-body">
             <h4 class="card-title">Game: ${this.title}</h4>
             <p class="card-text">
@@ -48,7 +50,6 @@ class Game {
         gamesContainer.innerHTML = ""
         gameSingle.addSingleGameToDom();
         gameSingle.getGameForm(gameSingle.id);
-        // gameSingle.addReviewToDom(gameSingle.reviews)
         gameSingle.reviews.map(review => Review.render(review, gameSingle.id))
     }
 
@@ -60,10 +61,26 @@ class Game {
     addSingleGameToDom(){
         const gamesContainer = document.getElementById("games-container");
         gamesContainer.innerHTML += this.renderSingleGame()
+        this.homeButton()
     }
 
     getGameForm(id){
         ReviewForm.addReviewForm(id)
     }
-    
+
+    homeButton() {
+        const gamesContainer = document.getElementById("games-container");
+        let homeButton = document.createElement("button")
+        homeButton.innerText = "Home"
+        gamesContainer.append(homeButton)
+        homeButton.addEventListener('click', function(){
+            console.log("firing")
+            renderDiv.innerHTML = ""
+            showDiv.innerHTML = ""
+            // Game.all.forEach(game => {
+            // const g = new Game(game)
+            // g.addToDom()
+            fetchGames()
+        })
+    }
 }
