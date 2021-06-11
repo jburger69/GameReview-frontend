@@ -68,6 +68,28 @@ class Game {
         ReviewForm.addReviewForm(id)
     }
 
+    static addSearchBar(){
+        
+        const searchBar = document.createElement("input")
+        const searchBarButton = document.createElement("button")
+        searchBarButton.innerText = "Search"
+        document.body.prepend(searchBar);
+        document.body.prepend(searchBarButton);
+        searchBarButton.addEventListener("click", function(){
+            renderDiv.innerHTML = ""
+            showDiv.innerHTML = ""
+            let x = []
+            Game.all.filter((game) => {
+                if(game.title.includes(searchBar.value) == true) {
+                    x.push(game)
+                }
+
+            })
+            x.forEach(x => x.addToDom())
+        })
+
+    }
+
     homeButton() {
         const gamesContainer = document.getElementById("games-container");
         let homeButton = document.createElement("button")

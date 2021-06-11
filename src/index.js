@@ -4,8 +4,9 @@ const renderDiv = document.getElementById("games-container")
 const deleteButton = document.getElementsByClassName('delete-button')
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    fetchGames();
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchGames();
+    Game.addSearchBar();
 })
 
 
@@ -22,21 +23,21 @@ function fetchGames() {
 }
 
 
-const mainDiv = document.getElementById("games-container")
-mainDiv.addEventListener("click", (event) => {
-    e = event.target
-    id = event.target.id
-    switch(event.target.dataset.id){
-        case "reviews":
-            fetch(`http://localhost:3000/api/v1/games/${id}`)
-            .then(r => r.json())
-            .then(data => {
-                Game.getInfo(data)
-            })
-            .catch(err => console.log(err))
+// const mainDiv = document.getElementById("games-container")
+// mainDiv.addEventListener("click", (event) => {
+//     let e = event.target
+//     let id = event.target.id
+//     switch(event.target.dataset.id){
+//         case "reviews":
+//             fetch(`http://localhost:3000/api/v1/games/${id}`)
+//             .then(r => r.json())
+//             .then(data => {
+//                 Game.getInfo(data)
+//             })
+//             .catch(err => console.log(err))
 
-            }
-    })
+//             }
+//     })
 
 
 
